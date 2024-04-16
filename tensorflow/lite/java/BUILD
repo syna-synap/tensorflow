@@ -46,6 +46,7 @@ JAVA_SRCS = glob([
 ]) + [
     "//tensorflow/lite/delegates/nnapi/java/src/main/java/org/tensorflow/lite/nnapi:nnapi_delegate_api_src",
     "//tensorflow/lite/delegates/nnapi/java/src/main/java/org/tensorflow/lite/nnapi:nnapi_delegate_impl_src",
+    "//tensorflow/lite/delegates/external/java/src/main/java/org/tensorflow/lite/external:external_delegate_api_src",
 ]
 
 # All Java source files.
@@ -67,6 +68,7 @@ JAVA_API_SRCS = [
     "src/main/java/org/tensorflow/lite/annotations/UsedByReflection.java",
     "src/main/java/org/tensorflow/lite/acceleration/ValidatedAccelerationConfig.java",
     "//tensorflow/lite/delegates/nnapi/java/src/main/java/org/tensorflow/lite/nnapi:nnapi_delegate_api_src",
+    "//tensorflow/lite/delegates/external/java/src/main/java/org/tensorflow/lite/external:external_delegate_api_src",
 ]
 
 # Java source files for API uses.
@@ -104,6 +106,7 @@ filegroup(
         "src/main/java/org/tensorflow/lite/annotations/UsedByReflection.java",
         "src/main/java/org/tensorflow/lite/package-info.java",
         "//tensorflow/lite/delegates/nnapi/java/src/main/java/org/tensorflow/lite/nnapi:nnapi_delegate_src",
+        "//tensorflow/lite/delegates/external/java/src/main/java/org/tensorflow/lite/external:external_delegate_src",
     ],
 )
 
@@ -143,6 +146,7 @@ TFLITE_HEADERS = [
     "//tensorflow/lite/core/c:c_api_experimental.h",
     "//tensorflow/lite/core/c:common.h",
     "//tensorflow/lite/delegates/nnapi:nnapi_delegate_c_api.h",
+    "//tensorflow/lite/delegates/external:external_delegate.h",
 ]
 # LINT.ThenChange(../c/BUILD:exported_headers)
 
@@ -955,6 +959,7 @@ jni_binary_with_tflite(
     linkscript = ":tflite_version_script.lds",
     tflite_deps = [
         "//tensorflow/lite/delegates/nnapi/java/src/main/native",
+        "//tensorflow/lite/delegates/external/java/src/main/native",
         "//tensorflow/lite/java/src/main/native",
     ],
     deps = [
@@ -974,6 +979,7 @@ jni_binary_with_tflite(
     linkscript = ":tflite_version_script.lds",
     tflite_deps = [
         "//tensorflow/lite/delegates/nnapi/java/src/main/native",
+        "//tensorflow/lite/delegates/external/java/src/main/native",
         "//tensorflow/lite/java/src/main/native:native_stable",
     ],
     deps = [
